@@ -12,10 +12,12 @@
 </head>
 
 <body>
-    {% include 'partials/header.html' %}
-    <main>
-        {% block content %} {% endblock %}
-    </main>
+    <div class="container">
+        {% include 'partials/header.html' %}
+        <main>
+            {% block content %} {% endblock %}
+        </main>
+    </div>
 </body>
 
 </html>

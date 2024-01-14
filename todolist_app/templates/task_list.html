@@ -2,36 +2,35 @@
 {% load static %}
 
 {% block content %}
-<a href="{% url 'task_create' %}">Add Task</a>
+<a href="{% url 'task_create' %}" class="add_task">Add Task</a>
 
 <section>
-    <table>
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
+    <div class="task_list">
         {% for task in tasks %}
         {% if task.completed == True %}
-        <tr>
-            <td><i><s>{{ task.title }}</s></i></td>
-            <td><a href="{% url 'task_update' task.id %}">Update</a></td>
-            <td><a href="{% url 'task_delete' task.id %}">Delete</a></td>
-        </tr>
+        <div class="completed">
+            <ul>
+                <li>
+                    <i><s>{{ task.title }}</s></i>
+                </li>
+            </ul>
+            <a href="{% url 'task_update' task.id %}">Edit</a>
+            <a href="{% url 'task_delete' task.id %}">Delete</a>
+        </div>
         {% else %}
-        <tr>
-            <td>{{ task.title }}</td>
-            <td><a href="{% url 'task_update' task.id %}">Update</a></td>
-            <td><a href="{% url 'task_delete' task.id %}">Delete</a></td>
-        </tr>
+        <div class="uncompleted">
+            <ul>
+                <li>
+                    {{ task.title }}
+                </li>
+            </ul>
+            <a href="{% url 'task_update' task.id %}">Edit</a>
+            <a href="{% url 'task_delete' task.id %}">Delete</a>
+        </div>
         {% endif %}
         {% empty %}
         <h3>No items in list</h3>
         {% endfor %}
-    </table>
+    </div>
 </section>
-
-<script>
-</script>
 {% endblock %}
