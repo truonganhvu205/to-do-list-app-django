@@ -12,7 +12,7 @@ body {
 
 .container {
     background-color: #fff;
-    max-width: 95%;
+    max-width: 400px;
     padding: 1.25rem;
     border-radius: 1rem;
     margin: auto;
@@ -42,6 +42,11 @@ header h1 {
     text-underline-offset: 2px;
 }
 
+.add_task:active, .task_list a:active {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 .task_list .uncompleted, .task_list .completed {
     display: flex;
     margin-bottom: 4px;
@@ -49,8 +54,8 @@ header h1 {
 
 .task_list .uncompleted ul, .task_list .completed ul {
     flex: 1;
-    max-width: 90%;
-    font-size: large;
+    max-width: 250px;
+    font-size: x-large;
     overflow-wrap: break-word;
     list-style-position: inside;
 }
@@ -75,4 +80,19 @@ section input {
 section input:hover {
     cursor: pointer;
     opacity: 0.6;
+}
+
+@media (max-width: 400px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .task_list .uncompleted ul, .task_list .completed ul {
+        max-width: 100%;
+        font-size: x-large;
+    }
+
+    a {
+        font-size: large;
+    }
 }
