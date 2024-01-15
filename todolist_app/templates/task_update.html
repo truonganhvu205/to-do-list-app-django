@@ -4,11 +4,9 @@
 {% block content %}
 <h3>Update Task</h3>
 
-<section>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit">
-    </form>
-</section>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
 {% endblock %}
