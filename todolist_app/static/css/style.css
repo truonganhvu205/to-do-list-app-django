@@ -49,6 +49,7 @@ header h1 {
 
 .task_list .uncompleted, .task_list .completed {
     display: flex;
+    align-items: center;
     margin-bottom: 4px;
 }
 
