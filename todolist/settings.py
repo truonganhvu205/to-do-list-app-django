@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-+zdp4=s22=ji3^^fgw1b87ueer$&&#yvnyf(*4$v=px(5@qz$6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 
 # Application definition
@@ -126,9 +126,12 @@ USE_TZ = True
 
 STATIC_URL = 'todolist_app/static/'
 
-STATICFILES_DIRS = [
-    'todolist_app/static',
-]
+# STATICFILES_DIRS = [
+#     'todolist_app/static',
+# ]
+
+STATICFILES_DIRS = os.path.join('todolist_app', 'static'),
+STATIC_ROOT = os.path.join('todolist_app', 'staticfiles_build', 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
