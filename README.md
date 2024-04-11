@@ -29,13 +29,6 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
-## Account required
-```bash
-Django
-    django_tdl
-    djangotdl123$%^
-```
-
 ## Deactivate virtual environment
 ```bash
 exit
