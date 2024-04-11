@@ -1,35 +1,38 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
-<h3>
-    <a href="{% url 'task_create' %}" class="add_task">Add Task</a>
+<h3 class="add_task">
+    <a href="{% url 'create_task' %}">Add task</a>
 </h3>
 
 <section>
-    <div class="task_list">
-        {% for task in tasks %}
-        {% if task.completed == True %}
-        <div class="completed">
-            <ul>
-                <li>
-                    <i><s>{{ task.title }}</s></i>
-                </li>
-            </ul>
-            <a href="{% url 'task_update' task.id %}">Edit</a>
-            <a href="{% url 'task_delete' task.id %}">Delete</a>
+    <div>
+        {% for task in task_list %}
+        <div class="task_list">
+            <div class="task">
+                <form action="{% url 'toggle_complete' task.pk %}" method="POST">
+                    {% csrf_token %}
+
+                    <button type="submit">x</button>
+                </form>
+
+                <div class="task_title">
+                    {% if task.completed %}
+                    <p>
+                        <s>{{ task.title }}</s>
+                    </p>
+                    {% else %}
+                    <p>{{ task.title }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="task_tools">
+                <a href="{% url 'edit_task' task.pk %}">Edit</a>
+                <a href="{% url 'delete_task' task.pk %}">Delete</a>
+            </div>
         </div>
-        {% else %}
-        <div class="uncompleted">
-            <ul>
-                <li>
-                    {{ task.title }}
-                </li>
-            </ul>
-            <a href="{% url 'task_update' task.id %}">Edit</a>
-            <a href="{% url 'task_delete' task.id %}">Delete</a>
-        </div>
-        {% endif %}
+
         {% empty %}
         <h3>No items in list</h3>
         {% endfor %}

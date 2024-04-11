@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="edit_task">
+    <h3>Edit task</h3>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="btn">
+            <a href="{% url 'task_list' %}">Back</a>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</section>
+{% endblock %}
